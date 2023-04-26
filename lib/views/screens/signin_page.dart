@@ -51,7 +51,7 @@ class _Signin_pageState extends State<Signin_page> {
                         const SizedBox(
                           height: 5,
                         ),
-                        Text(c
+                        Text(
                           "Email",
                           style: GoogleFonts.alegreya(
                               fontSize: 18, fontWeight: FontWeight.w500),

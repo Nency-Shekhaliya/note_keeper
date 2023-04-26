@@ -99,6 +99,7 @@ class _Home_PageState extends State<Home_Page> {
                         style: GoogleFonts.alegreya(
                           fontSize: 14,
                         ),
+                        overflow: TextOverflow.ellipsis,
                       ),
                       trailing: Row(
                         mainAxisSize: MainAxisSize.min,
@@ -125,9 +126,65 @@ class _Home_PageState extends State<Home_Page> {
                             ),
                           ),
                           IconButton(
-                              onPressed: () async {
-                                await Firestorehelper.firestorehelper
-                                    .deleterecored(id: alldocument[index].id);
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      title: Text(
+                                        "Are you sure you  want to delete data?",
+                                        style: GoogleFonts.alegreya(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      content: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "This will delete this data permanently, you cannot undo this action. ",
+                                            style: GoogleFonts.alegreya(
+                                              fontSize: 16,
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                      actions: [
+                                        OutlinedButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text(
+                                            "Cancel",
+                                            style: GoogleFonts.alegreya(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black),
+                                          ),
+                                        ),
+                                        OutlinedButton(
+                                          onPressed: () async {
+                                            await Firestorehelper
+                                                .firestorehelper
+                                                .deleterecored(
+                                                    id: alldocument[index].id);
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text(
+                                            "Delete",
+                                            style: GoogleFonts.alegreya(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black),
+                                          ),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
                               },
                               icon: const Icon(
                                 Icons.delete_outlined,

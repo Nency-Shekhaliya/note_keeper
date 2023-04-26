@@ -119,12 +119,28 @@ class _Welcome_pageState extends State<Welcome_page> {
                       );
                     }
                   },
-                  child: Text(
-                    "Signin with Google",
-                    style: GoogleFonts.alegreya(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                        color: Colors.blueGrey),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(right: 5),
+                        height: 20,
+                        width: 20,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: NetworkImage(
+                                    "https://blog.hubspot.com/hubfs/image8-2.jpg"))),
+                      ),
+                      Text(
+                        "Signin with Google",
+                        style: GoogleFonts.alegreya(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            color: Colors.blueGrey),
+                      ),
+                    ],
                   ),
                 )
               ],
